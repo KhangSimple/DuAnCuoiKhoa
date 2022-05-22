@@ -83,77 +83,69 @@ SDL_Surface* gCurrentSurface = NULL;
 
 int main(int argc, char* argv[])
 {
-    menu:
-    bool check_menu=false;
-    loadmenu(check_menu);
-    if(LEAVE_GAME()) return 0;
-    if(check_menu) goto start;
-    else{
-        LoadHighScore();
-        goto menu;
-    }
-    start:
-    bool check=false;
-    // Reset score
-    resetScore();
-    srand(time(0));
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    initSDL(window, renderer);
-    Painter painter(window, renderer);
-    gallery = new Gallery(painter);
-    //renderSplashScreen(); //Doi bàn phím
-    PlayGround playGround(GROUND_WIDTH, GROUND_HEIGHT);
-    SDL_Event e;
-    auto start = CLOCK_NOW();
-    renderGamePlay(painter, playGround);
-    while (playGround.isGameRunning()){
-        // Load BackGround Music
-        loadSound(Mix_LoadMUS("sound/BkMusic.mp3"),0);
-        Mix_ResumeMusic();
-        while (SDL_PollEvent(&e)) {
-            UserInput input = interpretEvent(e);
-            playGround.processUserInput(input);
-        }
+    //Game Loop
 
-        auto end = CLOCK_NOW();
-        ElapsedTime elapsed = end-start;
-        if (elapsed.count() > STEP_DELAY) {
-            playGround.nextStep();
+    do{
+        // check_menu use to check player choose "Play" or "HighScore"
+        bool check_menu=false;
+        loadmenu(check_menu);
+        if(isLeaveGame()) return 0;
+        if(!check_menu){
+            LoadHighScore();
+            continue;
+        }
+        //  Variable re_play is used to check if the player wants to play again?
+        bool re_play;
+        do{
+            //int m = loadMusic("sound/BkMusic.mp3");
+            re_play=false;
+            // Reset score after play again
+            resetScore();
+            srand(time(0));
+            SDL_Window* window;
+            SDL_Renderer* renderer;
+            initSDL(window, renderer);
+            Painter painter(window, renderer);
+            gallery = new Gallery(painter);
+            //renderSplashScreen(); // Wait key
+            PlayGround playGround(GROUND_WIDTH, GROUND_HEIGHT);
+            SDL_Event e;
+            auto start = CLOCK_NOW();
             renderGamePlay(painter, playGround);
-            start = end;
-        }
-        SDL_Delay(1);
-    }
-    // Pause music
-    Mix_PauseMusic();
-    // Load Game Over Sound
-    loadEffectSound(Mix_LoadWAV("sound/gameover.wav"));
-    SDL_Delay(1000);
-    //shut window game
-    quitSDL(window, renderer);
-    // Show score
-    LoadMask();
-    // Game over window
-    renderGameOver(check);
-    close();
-
-    //Kiem tra xem nguoi choi co muon choi lai khong?
-        // Press "Yes" to play again
-        // Press "No" , return menu
-    if(check==true){
-        check=false;
-        goto start;
-    }
-    else{
-        goto menu;
-    }
-
-    // Cap nhap diem vao bang diem HighScore
-    updateRankingTable(playGround);
+            Mix_ResumeMusic();
+            loadSound((char*)"sound/BkMusic.mp3");
+            while (playGround.isGameRunning()){
+                // Load BackGround Music
+                while (SDL_PollEvent(&e)) {
+                    UserInput input = interpretEvent(e);
+                    playGround.processUserInput(input);
+                }
+                auto end = CLOCK_NOW();
+                ElapsedTime elapsed = end-start;
+                if (elapsed.count() > STEP_DELAY) {
+                    playGround.nextStep();
+                    renderGamePlay(painter, playGround);
+                    start = end;
+                }
+                SDL_Delay(1);
+            }
+            // Pause music
+            Mix_HaltMusic();
+            // Load Game Over Sound
+            loadEffectSound("sound/gameover.wav");
+            SDL_Delay(1000);
+            //shut window game
+            quitSDL(window, renderer);
+            // Show score
+            LoadMask();
+            // Game over window
+            renderGameOver(re_play);
+            close();
+        }while(re_play);
+    }while(!isLeaveGame());
     // release picture
     delete gallery;
-    quitSDL(window, renderer);
+    //quitSDL(window, renderer);
     return 0;
 }
 bool loadMedia()

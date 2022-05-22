@@ -58,7 +58,7 @@ void Snake::nextStep()
 
     changePlayGroundState(CELL_EMPTY);
     if (cherry > 0) {
-        score+=5;
+        score+=10;
         cherry--;
         head = new SnakeNode(newPosition, head);
     } else {
@@ -69,7 +69,7 @@ void Snake::nextStep()
     changePlayGroundState(CELL_SNAKE);
 
     if (type == CELL_CHERRY) {
-        loadEffectSound(Mix_LoadWAV("sound/eat.wav"));
+        loadEffectSound("sound/eat.wav");
         cherry++;
         playGround->addCherry();
     }

@@ -5,6 +5,6 @@ bool loadMediaMenu();
 bool initMenu();
 void closeMenu();
 void loadmenu(bool &check_menu);
-bool LEAVE_GAME();
+bool isLeaveGame();
 
 #endif // LOADMENU_H_INCLUDED

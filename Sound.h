@@ -3,8 +3,10 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <stdio.h>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
-int loadSound(Mix_Music* music,int loops);
-int loadEffectSound(Mix_Chunk* chunk);
-
+int loadSound(const char* filename);
+int loadEffectSound(const char* filename);
 #endif // SOUND_H_INCLUDED

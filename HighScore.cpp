@@ -8,6 +8,11 @@
 #include "painter.h"
 #include "Snake.h"
 
+const int HIGHSCORE_WIDTH = 600 ;
+const int HIGHSCORE_LENGTH = 400 ;
+const int posX = 280;
+const int distanceY = 40;
+
 #undef main
 bool comp(const int a, const int b){
    return a > b;
@@ -35,22 +40,19 @@ void LoadHighScore()
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
 		printf("Unable to initialize SDL %s\n", SDL_GetError());
-		//return -1;
 	}
 
 	//Initialize the truetype font API.
 	if (TTF_Init() < 0)
 	{
 		SDL_Log("%s", TTF_GetError());
-		//return -1;
 	}
 
 	//Create window
-	window = SDL_CreateWindow("HighScore", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("HighScore", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, HIGHSCORE_WIDTH, HIGHSCORE_LENGTH, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
 		printf("Could not create window %s", SDL_GetError());
-		//return -1;
 	}
 
 	//create a renderer
@@ -58,14 +60,13 @@ void LoadHighScore()
 	if (renderer == NULL)
 	{
 		printf("Could not create render %s", SDL_GetError());
-		//return -1;
 	}
 	Painter painter(window, renderer);
-    painter.clearWithBgColor(WHITE_COLOR);
+    painter.clearWithBgColor(RED_COLOR);
 
-    for(int i=0;i<=Arr_Score.size()+1;i++){
+    for(int i=0;i<=Arr_Score.size();i++){
         font = TTF_OpenFont("mono0755.ttf", 20);
-        SDL_Color fg = { 0, 0, 255};
+        SDL_Color fg = { 255, 255, 255};
         bool isRunning = true;
         std::stringstream ss;
         std::string text;
@@ -91,10 +92,10 @@ void LoadHighScore()
         TTF_SizeText(font, text.c_str(), &srcRest.w, &srcRest.h);
 
         srcRest.x = 0;
-        srcRest.y =  0;
+        srcRest.y = 0;
 
-        desRect.x = 290;
-        desRect.y = i*40;
+        desRect.x = posX;
+        desRect.y = i*distanceY;
         if(i==0) desRect.x=210;
         desRect.w = srcRest.w;
         desRect.h = srcRest.h;
@@ -128,9 +129,6 @@ void LoadHighScore()
                     }
                 }
             }
-            //text="1:";
-
-            // clear the window to black
             //SDL_RenderClear(renderer);
             //Copy a portion of the texture to the current rendering target.
             SDL_RenderCopy(renderer, texture, &srcRest, &desRect);

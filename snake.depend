@@ -507,7 +507,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1652111262 source:c:\code blocks\duancuoikhoa\gallery.cpp
+1653059198 source:c:\code blocks\duancuoikhoa\gallery.cpp
 	"Gallery.h"
 
 1651164609 c:\code blocks\duancuoikhoa\gallery.h
@@ -893,11 +893,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1651732997 c:\code blocks\duancuoikhoa\painter.h
+1653047115 c:\code blocks\duancuoikhoa\painter.h
 	<string>
 	<SDL.h>
 
-1652672452 source:c:\code blocks\duancuoikhoa\highscore.cpp
+1653058647 source:c:\code blocks\duancuoikhoa\highscore.cpp
 	<stdio.h>
 	<SDL.h>
 	<SDL_ttf.h>
@@ -921,13 +921,13 @@
 
 1488382504 c:\code blocks\duancuoikhoa\position.h
 
-1652236885 source:c:\code blocks\duancuoikhoa\loadmenu.cpp
+1653095653 source:c:\code blocks\duancuoikhoa\loadmenu.cpp
 	"LoadMenu.h"
 	<string>
 	<SDL.h>
 	<SDL_image.h>
 
-1651824714 c:\code blocks\duancuoikhoa\loadmenu.h
+1653095653 c:\code blocks\duancuoikhoa\loadmenu.h
 
 1561870398 ..\..\..\..\..\..\software\sdl_image\x86_64-w64-mingw32\include\sdl2\sdl_image.h
 	"SDL.h"
@@ -935,7 +935,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1652708056 source:c:\code blocks\duancuoikhoa\main.cpp
+1653183911 source:c:\code blocks\duancuoikhoa\main.cpp
 	<iostream>
 	<stdio.h>
 	<cstdlib>
@@ -972,10 +972,12 @@
 	<string>
 	"painter.h"
 
-1652231520 c:\code blocks\duancuoikhoa\sound.h
+1653180676 c:\code blocks\duancuoikhoa\sound.h
 	<SDL.h>
 	<SDL_mixer.h>
 	<stdio.h>
+	<vector>
+	<algorithm>
 
 1540998018 ..\..\..\..\..\..\software\sdl2_mixer\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
 	"SDL_stdinc.h"
@@ -999,13 +1001,13 @@
 	<cstdlib>
 	"PlayGround.h"
 
-1652672354 source:c:\code blocks\duancuoikhoa\snake.cpp
+1653180483 source:c:\code blocks\duancuoikhoa\snake.cpp
 	"Snake.h"
 	"PlayGround.h"
 	"Sound.h"
 
-1652236264 source:c:\code blocks\duancuoikhoa\sound.cpp
-	<Sound.h>
+1653183795 source:c:\code blocks\duancuoikhoa\sound.cpp
+	"Sound.h"
 
 1651733096 source:c:\code blocks\duancuoikhoa\text.cpp
 	<stdio.h>

@@ -170,7 +170,7 @@ void loadmenu(bool &check_menu)
 	}
 	closeMenu();
 }
-bool LEAVE_GAME()
+bool isLeaveGame()
 {
     return leavegame;
 }
