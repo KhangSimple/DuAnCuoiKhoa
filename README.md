@@ -31,7 +31,8 @@
     - Ý tưởng chính :Tạo sân chơi cho rắn di chuyến ăn táo bằng các nút KEY_UP , KEY_DOWN , KEY_RIGHT , KEY_LEFT sau đó tạo ra cấu trúc như các 
           game thông thường với "menu" , "score" ,"gameover" , "highscore" .
 
-3. Các chức năng đã cài đặt
+3. Các chức năng đã cài đặt 
+    - Link Video : https://www.youtube.com/watch?v=uJQIP4WF0xg (có âm thanh trò chơi nhưng do lap bị hỏng mic nên không thu được) 
     - Ở đây các thao tác với game là "bàn phím".  
     - Cửa sổ "menu" với 2 mục là : "Play" và "HighScore"
         + Khi chọn "Play" thì sẽ hiện lên cửa sổ "Snake Game" và chơi trò chơi.
