@@ -20,7 +20,8 @@
                     
                 - Bấm chuột phải vào project rồi chọn "Build options" rồi làm các bước y như trên
             - Với VsCode: 
-                + Làm theo hướng dẫn trong : https://pie-cheque-188.notion.site/C-i-t-h-a-C-Windows-ef0a99a8dcae4dae86a39dc1cbc35980
+                + Làm theo hướng dẫn trong : https://pie-cheque-188.notion.site/C-i-t-h-a-C-Windows-ef0a99a8dcae4dae86a39dc1cbc35980 .
+                + Và cài thêm các thư viện như trên trong codeBlocks (cài tương tự như cài SDL trong link hướng dẫn ở trên)
                 + Trong  "Makefile": 
                     all:
 	                    g++ -Isrc/include -Lsrc/lib -o main main.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
